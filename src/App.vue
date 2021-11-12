@@ -9,6 +9,8 @@
 
 <style>
 html {
+  background-image: url('~@/assets/background.svg');
+  background-size: cover;
   font-size: 16px;
   height: 100vh;
 }
@@ -18,7 +20,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #a1afbe;
 }
 
 #nav {
@@ -27,7 +29,8 @@ html {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #a1afbe;
+  font-size: 1.2rem;
 }
 
 #nav a.router-link-exact-active {

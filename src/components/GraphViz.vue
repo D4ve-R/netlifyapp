@@ -1,5 +1,5 @@
 <template>
-    <h3>Dijkstra shortest path algortihm</h3>
+    <h3>Shortest path algortihm</h3>
     <button @click="initGrid()"> Reset</button>
     <button @click="getPath()">Shortest Path </button>
     <button @click="getInfo()">Control </button>
@@ -127,7 +127,7 @@ button{
 }
 
 button:hover{
-    background-color: rgb(0, 180, 0);
+    background-color: rgba(0, 255, 0, 0.733);
     transform: scale(1.05);
     transition: background-color 500ms ease-out;
 }
