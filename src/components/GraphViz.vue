@@ -102,7 +102,7 @@ export default {
         getInfo(){
             Swal.fire({
                 title: 'Controls',
-                html: "<ul><li>Click a box to set starting point</li><li>Click another box to set ending point</li><li>Hold ctrl and hover over box to activate wall</li><li>Hold opt and hover over box to deactivate wall</li></ul>",
+                html: "<ul><li><i class=\"fas fa-mouse-pointer\"></i>Click a box to set starting point</li><li><i class=\"fas fa-mouse-pointer\"></i>Click another box to set ending point</li><li>Hold ctrl and hover over box to activate wall</li><li>Hold opt and hover over box to deactivate wall</li></ul>",
                 icon: 'info',
                 confirmButtonText: 'Cool'
             }).then(() => Swal.fire({

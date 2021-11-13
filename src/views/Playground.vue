@@ -35,7 +35,7 @@ export default {
     margin: auto;
     margin-top: 2rem;
     padding: 0.1rem 0 1rem 0;
-    background: rgb(100, 100, 100);
+    background: rgb(85, 85, 85);
     border-radius: 1rem;
     color : rgb(0, 255, 115);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;

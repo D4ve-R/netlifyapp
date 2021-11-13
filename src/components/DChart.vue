@@ -23,14 +23,20 @@ export default {
                     datasets: [{
                         label: 'My First Dataset',
                         data: [80, 55, 70, 70, 35],
-                        borderColor: 'rgba(0,0,0,0.1)',
-                        hoverBackgroundColor: "rgba(232,105,90,0.8)",
+                        borderColor: 'rgba(0,0,0,0.01)',
+                        hoverBackgroundColor: [
+                            'rgba(255, 0, 0, 1)',
+                            'rgba(255, 135, 0, 1)',
+                            'rgba(55, 100, 255, 1)',
+                            'rgba(255,255,0, 1)',
+                            'rgba(136, 0, 255, 1)'
+                        ],
                         backgroundColor: [
-                            '#ff0000',
-                            '#ff8800',
-                            'rgb(55, 100, 255)',
-                            'rgb(255,255,0)',
-                            '#8800ff'
+                            'rgba(255, 0, 0, 0.8)',
+                            'rgba(255, 135, 0, 0.8)',
+                            'rgba(55, 100, 255, 0.8)',
+                            'rgba(255,255,0, 0.8)',
+                            'rgba(136, 0, 255, 0.8)'
                         ],
                         hoverOffset: 4
                     }]
@@ -63,7 +69,7 @@ export default {
     margin: auto;
     margin-top: 2rem;
     padding: 0.1rem 0 1rem 0;
-    background: rgb(100, 100, 100);
+    background: rgb(85, 85, 85);
     border-radius: 1rem;
     color:white;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;

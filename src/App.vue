@@ -11,8 +11,11 @@
 html {
   background-image: url('~@/assets/background.svg');
   background-size: cover;
+  background-attachment: fixed;
   font-size: 16px;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
@@ -21,6 +24,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #a1afbe;
+  margin: 0;
+  padding: 0;
 }
 
 #nav {
