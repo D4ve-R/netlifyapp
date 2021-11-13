@@ -20,18 +20,19 @@ export default {
 </script>
 
 <style>
-@media (max-width: 768px) {
+@media only screen and (max-width: 750px) {
     .playground {
     width:100%;
     padding: 0.1rem 0 1rem 0;
-    background: rgb(107, 107, 107);
+    background: rgb(214, 34, 34);
     border-radius: 1rem;
     color : #3ec086;
     box-shadow: rgb(0, 0, 0) 0px 5px 15px;
     }
 }
 .playground {
-    width:50%;
+    width:33%;
+    min-width: 200px;
     margin: auto;
     margin-top: 2rem;
     padding: 0.1rem 0 1rem 0;

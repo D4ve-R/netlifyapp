@@ -1,8 +1,10 @@
 <template>
     <h3>Shortest path algortihm</h3>
+    <div class="btns">
     <button @click="initGrid()"> Reset</button>
     <button @click="getPath()">Shortest Path </button>
     <button @click="getInfo()">Control </button>
+    </div>
     <div class="grid">
         <div class="col" v-for="(rows, id) in grid" :key="id">
             <Box v-for="(node) in rows" 
@@ -19,7 +21,7 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import Box from './Box.vue';
 import {dijkstra} from '@/use/useDijkstra';
 
@@ -121,15 +123,23 @@ export default {
 </script>
 
 <style scoped>
+.btns {
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
 button{
-    margin-right: 0.2rem;
-    transition: transform 0.5s
+    box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.75);
 }
 
 button:hover{
-    background-color: rgba(0, 255, 0, 0.733);
-    transform: scale(1.05);
-    transition: background-color 500ms ease-out;
+    background-color: rgba(0, 255, 0, 0.8);
+    transition: background-color 1s ease-out;
+    transition: box-shadow 1s ease-out;
+    box-shadow: 0 0 5px 2px rgb(0, 255, 0, 0.8);
+    border: transparent;
 }
 
 .grid{

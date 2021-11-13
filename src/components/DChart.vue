@@ -65,7 +65,8 @@ export default {
 <style>
 
 .dchart{
-    width:50%;
+    width: 33%;
+    min-width: 300px;
     margin: auto;
     margin-top: 2rem;
     padding: 0.1rem 0 1rem 0;
