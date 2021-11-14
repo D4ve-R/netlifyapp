@@ -1,60 +1,38 @@
 <template>
   <div class="metamaskclient">
       <i class="fab fa-ethereum fa-3x"></i>
-      <button id="connectBtn" @click="connect" :disabled="false"></button>
-      <button @click="getAccounts">Send dave ETH</button>
+      <button ref="connectBtn" @click.once="connectToMM" :disabled="disableConnect"></button>
+      <button @click="sendETH">Send ETH to dave</button>
   </div>
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, ref } from 'vue'
 import MetaMaskOnboarding from '@metamask/onboarding'
-
 
 export default {
     setup(){
-        var installed = false;
-        var disabled = false
         var ethereum
-        var connectBtn
-        const forwarderOrigin = 'http://localhost:9010'
-        const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
+        const installed = ref(false)
+        const disableConnect = ref(false)
+        const connectBtn = ref(null)
+        // const forwarderOrigin = 'http://localhost:9010'
+        // const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
+        const onboarding = new MetaMaskOnboarding('http://localhost:9010')
 
-        const isMetaMaskInstalled = () => {
-            //Have to check the ethereum binding on the window object to see if it's installed
-            ({ ethereum } = window);
-            return Boolean(ethereum && ethereum.isMetaMask);
-            };
-
-        const MetaMaskClientCheck = () => {
-            connectBtn = document.getElementById('connectBtn')
-            if (!isMetaMaskInstalled()) {
-                installed = false;
-                connectBtn.innerText = 'Click here to install MetaMask!';
-            } else {
-                installed= true;
-                connectBtn.innerText = 'Connect'
-            }
-        };
-
-        const connect = async () => {
-            if(installed){
-                try {
-                    // Will open the MetaMask UI
-                    console.log("Connecting to MetaMask")
-                    connectBtn.disabled = true
-                    await ethereum.request({ method: 'eth_requestAccounts' });   
-                } catch (error) {
-                    console.error(error);
-                }
+        const connectToMM = async () => {
+            if(installed.value){
+                disableConnect.value = true
+                console.log("Connecting to MetaMask")
+                await ethereum.request({ method: 'eth_requestAccounts' }).catch(e => console.log(e))
+        
             }
             else {
                 onboarding.startOnboarding()
             }
-            connectBtn.disabled = true
         }
 
-        const getAccounts = async () => {
+        const sendETH = async () => {
             const transactionParameters = {
                 gas: '0x2701',
                 to: '0x75D4f6bA5B1f309e65065F54AAE2dA125F54C534', // Required except during contract publications.
@@ -62,8 +40,8 @@ export default {
                 value: '0x38D7EA4C68000', // Only required to send ether to the recipient from the initiating external account.
                 data:
                   '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', // Optional, but used for defining smart contract creation and interaction.
-                chainId: '0x3', // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
-            };
+            }
+
             try{
                 await ethereum.request({
                     method: 'eth_sendTransaction',
@@ -73,12 +51,30 @@ export default {
                 console.log(err)
             }
         }
+
+        const isMetaMaskInstalled = () => {
+            // check ethereum binding on window to see if installed
+            ({ ethereum } = window);
+            return Boolean(ethereum && ethereum.isMetaMask);
+        }
         
         onMounted(() => {
-            MetaMaskClientCheck();
+            // const connectBtn = document.getElementById('connectBtn')
+            if (!isMetaMaskInstalled()) {
+                installed.value = false;
+                connectBtn.value.innerHTML = 'Click here to install MetaMask!'
+            } else {
+                installed.value = true;
+                if(ethereum.isConnected()){
+                    disableConnect.value = true
+                    connectBtn.value.innerHTML = 'Already connected!'
+                } else {
+                    connectBtn.value.innerHTML = 'Connect'
+                }
+            }
         })
 
-        return {connect, getAccounts, disabled}
+        return {connectToMM, sendETH, disableConnect, connectBtn }
     },
 }
 </script>
@@ -95,9 +91,21 @@ export default {
 }
 
 button{
+    height: 1.5rem;
     align-self: center;
     max-width: 50%;
     margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.25em 0 rgb(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+button:hover{
+    background-color: rgba(0, 255, 0, 0.8);
+    transition: background-color 1s ease-out;
+    transition: box-shadow 1s ease-out;
+    box-shadow: 0 0 5px 2px rgb(0, 255, 0, 0.8);
+    border: solid black 1px;
 }
 
 </style>

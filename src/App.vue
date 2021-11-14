@@ -26,7 +26,7 @@ export default {
       denyButtonText: 'Nope',
     }).then((result) => {
       if(result.isDenied) {
-        console.log("Diasabling Google Analytics");
+        console.log("Disabling Google Analytics");
         this.$ga.disable();
       }
       else {

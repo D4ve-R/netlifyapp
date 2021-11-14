@@ -131,6 +131,8 @@ export default {
 }
 
 button{
+    height: 1.5em;
+    box-sizing: border-box;
     box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.75);
 }
 

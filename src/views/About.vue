@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import DChart from '@/components/DChart.vue';
+import DChart from '@/components/Charts/DChart.vue';
 
 export default {
   name:'About',
