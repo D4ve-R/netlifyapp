@@ -17,8 +17,6 @@ export default {
         const disableConnect = ref(false)
         const disableSend = ref(true)
         const connectBtn = ref(null)
-        // const forwarderOrigin = 'http://localhost:9010'
-        // const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
         const onboarding = new MetaMaskOnboarding('http://localhost:9010')
 
         const connectToMM = async () => {
@@ -27,6 +25,7 @@ export default {
                 console.log("Connecting to MetaMask")
                 await ethereum.request({ method: 'eth_requestAccounts' }).catch(e => console.log(e))
                 disableSend.value = false;
+                connectBtn.value.innerHTML = 'Connected!'
             }
             else {
                 onboarding.startOnboarding()
@@ -58,19 +57,13 @@ export default {
         }
         
         onMounted(() => {
-            // const connectBtn = document.getElementById('connectBtn')
             if (!isMetaMaskInstalled()) {
                 installed.value = false;
                 connectBtn.value.innerHTML = 'Click here to install MetaMask!'
             } else {
                 installed.value = true;
-                if(ethereum.isConnected()){
-                    disableConnect.value = true
-                    connectBtn.value.innerHTML = 'Already connected!'
-                    disableSend.value = false;
-                } else {
-                    connectBtn.value.innerHTML = 'Connect'
-                }
+                connectBtn.value.innerHTML = 'Connect'
+                
             }
         })
 
@@ -102,10 +95,10 @@ button{
 
 .active:hover {
     background-color: rgba(0, 255, 0, 0.8);
-    transition: background-color 1s ease-out;
-    transition: box-shadow 1s ease-out;
+    transition: background-color 0.5s ease-out;
+    transition: box-shadow 0.5s ease-out;
     box-shadow: 0 0 5px 2px rgb(0, 255, 0, 0.8);
-    border: solid black 1px;
+    border: solid rgba(0, 0, 0, 0.25) 1px;
 }
 
 </style>

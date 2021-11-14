@@ -131,17 +131,21 @@ export default {
 }
 
 button{
-    height: 1.5em;
+    height: 1.5rem;
+    align-self: center;
+    max-width: 50%;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.25em 0 rgb(0, 0, 0, 0.1);
     box-sizing: border-box;
-    box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.75);
 }
 
 button:hover{
     background-color: rgba(0, 255, 0, 0.8);
-    transition: background-color 1s ease-out;
-    transition: box-shadow 1s ease-out;
+    transition: background-color 0.5s ease-out;
+    transition: box-shadow 0.5s ease-out;
     box-shadow: 0 0 5px 2px rgb(0, 255, 0, 0.8);
-    border: transparent;
+    border: solid rgba(0, 0, 0, 0.25) 1px;
 }
 
 .grid{

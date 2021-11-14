@@ -5,6 +5,9 @@
     <BodyCard>
         <GraphViz/>
     </BodyCard>
+    <BodyCard>
+        <p>hello</p>
+    </BodyCard>
 </template>
 
 <script>

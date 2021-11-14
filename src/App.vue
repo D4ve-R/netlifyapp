@@ -39,23 +39,30 @@ export default {
 </script>
 
 <style>
-html, body {
+html {
   font-size: 16px;
-  height: 100vh;
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
-#app {
+body{
   background-image: url('~@/assets/background.svg');
   background-size: cover;
   background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#app {
+  
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #a1afbe;
-  height: 100vh;
+  
 }
 
 #nav {
