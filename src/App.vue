@@ -11,28 +11,29 @@
 import Swal from 'sweetalert2';
 
 export default {
-  methods: {
-    closeTab(){
-      window.close();
-    }
+  created(){
+    this.$ga.disable()
   },
-  mounted(){
+  beforeMount(){
     Swal.fire({
-              title: 'Cookies',
-              html: "We use Google Analytics to improve user experience <br> Please accept or leave",
-              iconHtml: "<i class=\"fas fa-cookie-bite\"></i>",
-              showDenyButton: true,
-              confirmButtonColor: 'green',
-              confirmButtonText: 'Accept',
-              denyButtonColor: 'red',
-              denyButtonText: 'Leave',
-            }).then((result) => {
-              if(result.isDenied) {
-                console.log("Diasabling Google Analytics");
-                window['ga-disable-G-45PZKR5J6F'] = true;
-              }
-              else window['ga-disable-G-45PZKR5J6F'] = false;
-            });
+      title: 'Cookies',
+      html: "We use Google Analytics to improve user experience <br> Please accept",
+      iconHtml: "<i class=\"fas fa-cookie-bite\"></i>",
+      showDenyButton: true,
+      confirmButtonColor: 'green',
+      confirmButtonText: 'Cool',
+      denyButtonColor: 'red',
+      denyButtonText: 'Nope',
+    }).then((result) => {
+      if(result.isDenied) {
+        console.log("Diasabling Google Analytics");
+        this.$ga.disable();
+      }
+      else {
+        console.log("Enabling Google Analytics");
+        this.$ga.enable();
+      }
+    });
   }
 }
 </script>

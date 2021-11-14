@@ -3,19 +3,17 @@
         <GraphViz/>
     </div>
     <div class="playground">
-        <myThree />
     </div>
 </template>
 
 <script>
 import GraphViz from '@/components/GraphViz.vue'
-import MyThree from '@/components/MyThree.vue'
+
 export default {
     name: 'Playground',
     components:{
         GraphViz,
-        MyThree
-    }
+    },
 }
 </script>
 
