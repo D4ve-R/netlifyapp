@@ -3,16 +3,19 @@
         <GraphViz/>
     </div>
     <div class="playground">
+        <MetaMaskClient />
     </div>
 </template>
 
 <script>
 import GraphViz from '@/components/GraphViz.vue'
+import MetaMaskClient from '@/components/MetaMaskClient.vue'
 
 export default {
     name: 'Playground',
     components:{
         GraphViz,
+        MetaMaskClient
     },
 }
 </script>
