@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
+    <img alt="Vue logo" src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    
+    <h4>Built with &#x2764; and <b>VueJs</b> <i class="fab fa-vuejs"></i></h4>
   </div>
 </template>
 

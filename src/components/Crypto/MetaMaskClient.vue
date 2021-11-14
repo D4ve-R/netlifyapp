@@ -1,8 +1,8 @@
 <template>
   <div class="metamaskclient">
       <i class="fab fa-ethereum fa-3x"></i>
-      <button ref="connectBtn" @click.once="connectToMM" :disabled="disableConnect"></button>
-      <button @click="sendETH">Send ETH to dave</button>
+      <button ref="connectBtn" @click.once="connectToMM" :disabled="disableConnect" :class="{active : !disableConnect}"></button>
+      <button @click="sendETH" :disabled="disableSend" :class="{active : !disableSend}">Send ETH to dave</button>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
         var ethereum
         const installed = ref(false)
         const disableConnect = ref(false)
+        const disableSend = ref(true)
         const connectBtn = ref(null)
         // const forwarderOrigin = 'http://localhost:9010'
         // const onboarding = new MetaMaskOnboarding({ forwarderOrigin })
@@ -25,7 +26,7 @@ export default {
                 disableConnect.value = true
                 console.log("Connecting to MetaMask")
                 await ethereum.request({ method: 'eth_requestAccounts' }).catch(e => console.log(e))
-        
+                disableSend.value = false;
             }
             else {
                 onboarding.startOnboarding()
@@ -35,11 +36,9 @@ export default {
         const sendETH = async () => {
             const transactionParameters = {
                 gas: '0x2701',
-                to: '0x75D4f6bA5B1f309e65065F54AAE2dA125F54C534', // Required except during contract publications.
+                to: '0x75D4f6bA5B1f309e65065F54AAE2dA125F54C534', // Required
                 from: ethereum.selectedAddress, // must match user's active address.
                 value: '0x38D7EA4C68000', // Only required to send ether to the recipient from the initiating external account.
-                data:
-                  '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', // Optional, but used for defining smart contract creation and interaction.
             }
 
             try{
@@ -68,13 +67,14 @@ export default {
                 if(ethereum.isConnected()){
                     disableConnect.value = true
                     connectBtn.value.innerHTML = 'Already connected!'
+                    disableSend.value = false;
                 } else {
                     connectBtn.value.innerHTML = 'Connect'
                 }
             }
         })
 
-        return {connectToMM, sendETH, disableConnect, connectBtn }
+        return {connectToMM, sendETH, disableConnect, disableSend, connectBtn }
     },
 }
 </script>
@@ -100,7 +100,7 @@ button{
     box-sizing: border-box;
 }
 
-button:hover{
+.active:hover {
     background-color: rgba(0, 255, 0, 0.8);
     transition: background-color 1s ease-out;
     transition: box-shadow 1s ease-out;

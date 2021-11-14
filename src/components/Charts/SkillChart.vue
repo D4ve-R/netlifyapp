@@ -1,11 +1,9 @@
 <template>
-  <div class="dchart">
-  <canvas id="myChart" width="300" height="150"></canvas>
-</div>
+    <canvas id="myChart" width="300" height="150"></canvas>
 </template>
 
 <script>
-import Chart from 'chart.js';
+import Chart from 'chart.js'
 
 export default {
     data () {
@@ -61,21 +59,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-.dchart{
-    width: 33%;
-    min-width: 300px;
-    height: 33%;
-    min-height: 150px;
-    margin: auto;
-    margin-top: 2rem;
-    padding: 0.1rem 0 1rem 0;
-    background: rgb(85, 85, 85);
-    border-radius: 1rem;
-    color:white;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-}
-
-</style>
