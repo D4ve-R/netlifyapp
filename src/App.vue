@@ -16,8 +16,14 @@ export default {
   },
   beforeMount(){
     Swal.fire({
+      toast: true,
+      position: 'bottom-right',
+      background: 'rgb(61, 61, 61)',
+      color: '#fff',
       title: 'Cookies',
-      html: "We use Google Analytics to improve user experience <br> Please accept",
+      customClass: {title: 'swalTitle'},
+      html: "<p style=\"color:white\">We use Google Analytics to improve user experience <br> Please accept</p>",
+      iconColor: 'white',
       iconHtml: "<i class=\"fas fa-cookie-bite\"></i>",
       showDenyButton: true,
       confirmButtonColor: 'green',
@@ -84,4 +90,9 @@ body{
 #nav a.router-link-exact-active {
   color: #2cb678;
 }
+
+.swalTitle {
+  color: white;
+}
+
 </style>

@@ -4,7 +4,7 @@
     <BodyCard>
       <h2>About Me</h2>
       <p>I'm a CS Student, who really likes code.<br>
-      Check out my <a href="#github">Github</a> &amp; <a href="#linkedin">Linkedin</a>.<br></p>
+      Check out my <a class="textLinks" href="#github">Github</a> &amp; <a class="textLinks" href="#linkedin">Linkedin</a>.<br></p>
     </BodyCard>
     <BodyCard>
       <SkillChart />
@@ -42,7 +42,7 @@ export default {
   color: white;
 }
 
-a {
+.textLinks {
   color: rgb(0, 200, 0);
   text-decoration:none;
   decoration: none;
