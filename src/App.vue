@@ -62,6 +62,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #a1afbe;
+  overflow: hidden;
   
 }
 

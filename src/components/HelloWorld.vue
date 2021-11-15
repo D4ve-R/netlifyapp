@@ -1,8 +1,11 @@
 <template>
   <div class="hello">
-    <img alt="Vue logo" src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    <h4>Built with &#x2764; and <b>VueJs</b> <i class="fab fa-vuejs"></i></h4>
+    <transition name="logo">
+      <img v-if="show" alt="Vue logo" src="../assets/logo.png">
+      <div v-else style="height:200px; width:200px; margin:auto;"></div>
+    </transition>
+    <h4>Built with &#x2764; and <b>VueJs</b> <i class="fab fa-vuejs" @click="show = ! show"></i></h4>
   </div>
 </template>
 
@@ -11,6 +14,11 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data(){
+    return {
+      show: true
+    }
   }
 }
 </script>
@@ -31,4 +39,29 @@ li {
 a {
   color: #42b983;
 }
+
+.fa-vuejs{
+  cursor: pointer;
+}
+
+.logo-enter-active {
+  animation: bounce 0.5s;
+}
+
+.logo-leave.active {
+  animation: bounce 0.5s reverse;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform : scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 </style>

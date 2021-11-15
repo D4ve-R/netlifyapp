@@ -12,7 +12,7 @@
     margin-top: 1.5rem;
     margin-bottom: 1rem;
     padding: 0.1rem 0 1rem 0;
-    background: rgb(85, 85, 85);
+    background: rgb(61, 61, 61);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;

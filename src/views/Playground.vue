@@ -1,13 +1,12 @@
 <template>
+    <div class="playground">
     <BodyCard>
         <MetaMaskClient />
     </BodyCard>
     <BodyCard>
         <GraphViz/>
     </BodyCard>
-    <BodyCard>
-        <p>hello</p>
-    </BodyCard>
+    </div>
 </template>
 
 <script>
@@ -26,5 +25,8 @@ export default {
 </script>
 
 <style>
+.playground {
+    overflow-y: auto;
+}
 
 </style>
